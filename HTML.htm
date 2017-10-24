@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Sample Site</title>
+    <link rel="stylesheet" type="text/css" href="StyleSheet.css">
+    <script>
+        
+        function loadDoc() {
+            var xhttp;
+            if (window.XMLHttpRequest) {
+                xhttp = new XMLHttpRequest();
+            } else {
+                xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xhttp.onreadystatechange = function () {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    myRequestName(xhttp);
+                }
+            };
+            xhttp.open("GET", "States.xml", true);
+            xhttp.send();
+        }
+        var jsobject = [];
+        function myRequestName(xml) {
+            var i;
+            var xmlDoc = xml.responseXML;
+            var selectOpt = "<select>";
+            var x = xmlDoc.getElementsByTagName("state");
+            for (i = 0; i < x.length; i++) {
+                
+                var name = x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+                var code = x[i].getElementsByTagName("Code")[0].childNodes[0].nodeValue;
+			    var agey = x[i].getElementsByTagName("agey")[0].childNodes[0].nodeValue;
+			    var agem = x[i].getElementsByTagName("agem")[0].childNodes[0].nodeValue;
+			    
+                selectOpt += "<option value=" + code + ">" + name + "</option>";
+			  
+              jsobject.push({ name, code , agey , agem });
+            }
+            selectOpt += "</select>";
+            document.getElementById("Select1").innerHTML = selectOpt;
+            
+   }
+
+        function selectedCity() {
+            var y = document.getElementById("Select1");
+            var j = y.selectedIndex;
+            var k = document.getElementById("Select1").value;
+            var selectedState = y.options[j].text;
+                     
+         // console.log(jsobject)
+           for (var i = 0; i < jsobject.length; i++) 
+           {
+             // for (var item in jsobject[i]) 
+            //  {
+              
+                   if(jsobject[i]["name"] == selectedState)
+                   {
+                 //  console.log("state : "+selectedState);
+                 //  console.log(jsobject[i]);
+                     if(jsobject[i]["name"] != "Select State")
+                    document.getElementById("demo1").innerHTML= "For "+jsobject[i]["name"] +" the Age Limit is "+ jsobject[i]["agey"] +" Years and "+ jsobject[i]["agem"] +" Months ";
+                  
+                  }
+            // }
+           }
+           return selectedState;
+         }
+        
+       
+       function myFunction() 
+       {
+            var xyear, xmonth, text, warnText,temp="";
+            temp = selectedCity();
+            xyear = document.getElementById("pyear").value;
+            xmonth = document.getElementById("pmonth").value;
+                      
+            if (xyear == "" || xmonth == "" || temp == "Select State") 
+            {
+                alert("Field must be filled out");
+                exit();
+                
+            }
+           
+           
+           for (var i = 0; i < jsobject.length; i++) 
+           {
+                if(jsobject[i]["name"] == temp)
+                  {
+                    if( jsobject[i]["agey"] <= xyear && jsobject[i]["agem"] <= xmonth )
+                    {
+                    text = "You're Eligible for Applying the Driver's License";
+                    warnText = "";
+                    }
+                    else
+                    {
+                    warnText = "You're not Eligible for Applying the Driver's License";
+                    text = "";
+                    }
+                  }
+            }
+
+           document.getElementById("demo").innerHTML = text;
+           document.getElementById("warning").innerHTML = warnText;  
+        }
+        loadDoc();
+</script>
+
+</head>
+<body>
+<div class="main">
+  <p class="heading" >
+  Driver's License Eligibility Check for Full unrestricted License
+  </p>
+ 
+  
+</div>
+<div style=" height:10px">
+</div>
+<div class="leftBlock">
+<p class="sub">The Age limit varies with the state.</p>
+ 
+<p class="sub">Select your State </p>
+<form action="" method="get">
+<p class="sub"><select id="Select1"  onchange="selectedCity()" class="text"></select></p>
+
+
+<p id= "demo1" class="sub"></p> 
+</div>
+<div style=" height:10px">
+</div>
+<div class="rightBlock">
+<p class="sub">Enter your Age to check</p>
+
+
+<p class="sub"><input id="pyear" class="text" placeholder="Enter Year">  <input id="pmonth" class="text" placeholder="Enter Month"></p>
+
+<p class="sub"><button type="button" onclick="myFunction()" class="button">Verify</button><button type="reset" class="button" value="Reset">Reset</button></p>
+
+<p id="demo" class="success"></p>
+<p id="warning" class ="warning"></p>
+</form>
+</div>
+
+
+
+
+</body>
+</html>
+ 
+
