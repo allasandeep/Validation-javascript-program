@@ -1,0 +1,98 @@
+﻿body
+{
+    background-color : White;
+}
+
+.leftBlock
+{
+    border-style : solid;
+    width:100%;
+    height:90%;
+    
+    margin:auto;
+}
+
+.rightBlock
+{
+    border-style : solid;
+    width:100%;
+   
+    margin:auto;
+    
+    
+    
+}
+.heading
+{
+    font-size: 30px;
+    font-family : "Times New Roman", Times, serif;
+    color : black;
+    text-align : center;
+    padding: 55px ;
+}
+
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 400px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.main
+{
+    
+    background-color : LightGray;
+    height : 150px;
+       
+}
+
+.sub
+{
+    font-size: 20px;
+    font-family : "Times New Roman", Times, serif;
+    color : black;
+    text-align : center;
+    }
+
+.button 
+{
+   
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 5px 18px;
+    text-align: center;    
+    display: inline-block;
+    font-size: 15px;
+    margin: 2px 1px;
+    cursor: pointer;
+}
+.text {
+    background-color: white;
+    border-style: solid;
+    padding: 3px 15px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 2px 1px;
+    cursor: pointer;
+}
+.warning
+{
+    font-size: 20px;
+    font-family : "Times New Roman", Times, serif;
+    color : red;
+    text-align : center;
+}
+
+.success
+{
+    font-size: 20px;
+    font-family : "Times New Roman", Times, serif;
+    color : green;
+    text-align : center;
+}
