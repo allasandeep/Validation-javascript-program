@@ -123,14 +123,12 @@
 </head>
 <body>
 <div class="main">
-  <p class="heading" >
-  Driver's License Eligibility Check for Full unrestricted License
-  </p>
- 
-  
+  <p class="heading" style= "color:white;"> Driver's License Eligibility Check for Full unrestricted License </p> 
 </div>
-<div style=" height:10px">
+<div style=" height:20px">
 </div>
+
+<div ng-app="WebApp" ng-controller="mycrtl">
 <form action="" method="get" class="form">
 <p class="sub">The Age limit varies with the state</p>
 <select id="Select1"  onchange="selectedCity()" class="text"></select><br />
@@ -148,6 +146,7 @@
 <p id="demo" class="success"></p>
 <p id="warning" class ="warning"></p>
 </form>
+</div>
 
 
 
